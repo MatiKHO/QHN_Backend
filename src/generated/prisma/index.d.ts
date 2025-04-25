@@ -972,6 +972,67 @@ export namespace Prisma {
    */
 
 
+  /**
+   * Count Type All_eventsCountOutputType
+   */
+
+  export type All_eventsCountOutputType = {
+    favoritedBy: number
+  }
+
+  export type All_eventsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    favoritedBy?: boolean | All_eventsCountOutputTypeCountFavoritedByArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * All_eventsCountOutputType without action
+   */
+  export type All_eventsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the All_eventsCountOutputType
+     */
+    select?: All_eventsCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * All_eventsCountOutputType without action
+   */
+  export type All_eventsCountOutputTypeCountFavoritedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserWhereInput
+  }
+
+
+  /**
+   * Count Type UserCountOutputType
+   */
+
+  export type UserCountOutputType = {
+    favorites: number
+  }
+
+  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    favorites?: boolean | UserCountOutputTypeCountFavoritesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCountOutputType
+     */
+    select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountFavoritesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: all_eventsWhereInput
+  }
+
 
   /**
    * Models
@@ -1245,6 +1306,8 @@ export namespace Prisma {
     tags?: boolean
     data_source?: boolean
     image?: boolean
+    favoritedBy?: boolean | all_events$favoritedByArgs<ExtArgs>
+    _count?: boolean | All_eventsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["all_events"]>
 
   export type all_eventsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1311,10 +1374,18 @@ export namespace Prisma {
   }
 
   export type all_eventsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"event_id" | "name" | "url" | "start_time" | "start_date" | "end_time" | "end_date" | "duration" | "venue_name" | "venue_address" | "longitude" | "latitude" | "summary" | "is_online_event" | "tickets_url" | "tags" | "data_source" | "image", ExtArgs["result"]["all_events"]>
+  export type all_eventsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    favoritedBy?: boolean | all_events$favoritedByArgs<ExtArgs>
+    _count?: boolean | All_eventsCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type all_eventsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type all_eventsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $all_eventsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "all_events"
-    objects: {}
+    objects: {
+      favoritedBy: Prisma.$UserPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       event_id: string
       name: string | null
@@ -1728,6 +1799,7 @@ export namespace Prisma {
    */
   export interface Prisma__all_eventsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    favoritedBy<T extends all_events$favoritedByArgs<ExtArgs> = {}>(args?: Subset<T, all_events$favoritedByArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1792,6 +1864,10 @@ export namespace Prisma {
      */
     omit?: all_eventsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: all_eventsInclude<ExtArgs> | null
+    /**
      * Filter, which all_events to fetch.
      */
     where: all_eventsWhereUniqueInput
@@ -1810,6 +1886,10 @@ export namespace Prisma {
      */
     omit?: all_eventsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: all_eventsInclude<ExtArgs> | null
+    /**
      * Filter, which all_events to fetch.
      */
     where: all_eventsWhereUniqueInput
@@ -1827,6 +1907,10 @@ export namespace Prisma {
      * Omit specific fields from the all_events
      */
     omit?: all_eventsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: all_eventsInclude<ExtArgs> | null
     /**
      * Filter, which all_events to fetch.
      */
@@ -1876,6 +1960,10 @@ export namespace Prisma {
      */
     omit?: all_eventsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: all_eventsInclude<ExtArgs> | null
+    /**
      * Filter, which all_events to fetch.
      */
     where?: all_eventsWhereInput
@@ -1924,6 +2012,10 @@ export namespace Prisma {
      */
     omit?: all_eventsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: all_eventsInclude<ExtArgs> | null
+    /**
      * Filter, which all_events to fetch.
      */
     where?: all_eventsWhereInput
@@ -1966,6 +2058,10 @@ export namespace Prisma {
      * Omit specific fields from the all_events
      */
     omit?: all_eventsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: all_eventsInclude<ExtArgs> | null
     /**
      * The data needed to create a all_events.
      */
@@ -2014,6 +2110,10 @@ export namespace Prisma {
      * Omit specific fields from the all_events
      */
     omit?: all_eventsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: all_eventsInclude<ExtArgs> | null
     /**
      * The data needed to update a all_events.
      */
@@ -2081,6 +2181,10 @@ export namespace Prisma {
      */
     omit?: all_eventsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: all_eventsInclude<ExtArgs> | null
+    /**
      * The filter to search for the all_events to update in case it exists.
      */
     where: all_eventsWhereUniqueInput
@@ -2107,6 +2211,10 @@ export namespace Prisma {
      */
     omit?: all_eventsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: all_eventsInclude<ExtArgs> | null
+    /**
      * Filter which all_events to delete.
      */
     where: all_eventsWhereUniqueInput
@@ -2127,6 +2235,30 @@ export namespace Prisma {
   }
 
   /**
+   * all_events.favoritedBy
+   */
+  export type all_events$favoritedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    cursor?: UserWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+  }
+
+  /**
    * all_events without action
    */
   export type all_eventsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2138,6 +2270,10 @@ export namespace Prisma {
      * Omit specific fields from the all_events
      */
     omit?: all_eventsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: all_eventsInclude<ExtArgs> | null
   }
 
 
@@ -2415,6 +2551,8 @@ export namespace Prisma {
     role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    favorites?: boolean | User$favoritesArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2469,10 +2607,18 @@ export namespace Prisma {
   }
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fullName" | "email" | "password" | "age" | "numberChildren" | "childrenAges" | "genderChildren" | "location" | "isAdmin" | "isDisabled" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    favorites?: boolean | User$favoritesArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
-    objects: {}
+    objects: {
+      favorites: Prisma.$all_eventsPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       fullName: string
@@ -2882,6 +3028,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    favorites<T extends User$favoritesArgs<ExtArgs> = {}>(args?: Subset<T, User$favoritesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$all_eventsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2942,6 +3089,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -2960,6 +3111,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -2977,6 +3132,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * Filter, which User to fetch.
      */
@@ -3026,6 +3185,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where?: UserWhereInput
@@ -3074,6 +3237,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which Users to fetch.
      */
     where?: UserWhereInput
@@ -3116,6 +3283,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to create a User.
      */
@@ -3164,6 +3335,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to update a User.
      */
@@ -3231,6 +3406,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * The filter to search for the User to update in case it exists.
      */
     where: UserWhereUniqueInput
@@ -3257,6 +3436,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter which User to delete.
      */
     where: UserWhereUniqueInput
@@ -3277,6 +3460,30 @@ export namespace Prisma {
   }
 
   /**
+   * User.favorites
+   */
+  export type User$favoritesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the all_events
+     */
+    select?: all_eventsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the all_events
+     */
+    omit?: all_eventsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: all_eventsInclude<ExtArgs> | null
+    where?: all_eventsWhereInput
+    orderBy?: all_eventsOrderByWithRelationInput | all_eventsOrderByWithRelationInput[]
+    cursor?: all_eventsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: All_eventsScalarFieldEnum | All_eventsScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3288,6 +3495,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
   }
 
 
@@ -3480,6 +3691,7 @@ export namespace Prisma {
     tags?: StringNullableFilter<"all_events"> | string | null
     data_source?: StringNullableFilter<"all_events"> | string | null
     image?: StringNullableFilter<"all_events"> | string | null
+    favoritedBy?: UserListRelationFilter
   }
 
   export type all_eventsOrderByWithRelationInput = {
@@ -3501,6 +3713,7 @@ export namespace Prisma {
     tags?: SortOrderInput | SortOrder
     data_source?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
+    favoritedBy?: UserOrderByRelationAggregateInput
   }
 
   export type all_eventsWhereUniqueInput = Prisma.AtLeast<{
@@ -3525,6 +3738,7 @@ export namespace Prisma {
     tags?: StringNullableFilter<"all_events"> | string | null
     data_source?: StringNullableFilter<"all_events"> | string | null
     image?: StringNullableFilter<"all_events"> | string | null
+    favoritedBy?: UserListRelationFilter
   }, "event_id">
 
   export type all_eventsOrderByWithAggregationInput = {
@@ -3593,6 +3807,7 @@ export namespace Prisma {
     role?: EnumRoleFilter<"User"> | $Enums.Role
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
+    favorites?: All_eventsListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -3610,6 +3825,7 @@ export namespace Prisma {
     role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    favorites?: all_eventsOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -3630,6 +3846,7 @@ export namespace Prisma {
     role?: EnumRoleFilter<"User"> | $Enums.Role
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
+    favorites?: All_eventsListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -3693,6 +3910,7 @@ export namespace Prisma {
     tags?: string | null
     data_source?: string | null
     image?: string | null
+    favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
   }
 
   export type all_eventsUncheckedCreateInput = {
@@ -3714,6 +3932,7 @@ export namespace Prisma {
     tags?: string | null
     data_source?: string | null
     image?: string | null
+    favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
   }
 
   export type all_eventsUpdateInput = {
@@ -3735,6 +3954,7 @@ export namespace Prisma {
     tags?: NullableStringFieldUpdateOperationsInput | string | null
     data_source?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
   }
 
   export type all_eventsUncheckedUpdateInput = {
@@ -3756,6 +3976,7 @@ export namespace Prisma {
     tags?: NullableStringFieldUpdateOperationsInput | string | null
     data_source?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
   }
 
   export type all_eventsCreateManyInput = {
@@ -3836,6 +4057,7 @@ export namespace Prisma {
     role?: $Enums.Role
     createdAt?: Date | string
     updatedAt?: Date | string
+    favorites?: all_eventsCreateNestedManyWithoutFavoritedByInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -3853,6 +4075,7 @@ export namespace Prisma {
     role?: $Enums.Role
     createdAt?: Date | string
     updatedAt?: Date | string
+    favorites?: all_eventsUncheckedCreateNestedManyWithoutFavoritedByInput
   }
 
   export type UserUpdateInput = {
@@ -3870,6 +4093,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    favorites?: all_eventsUpdateManyWithoutFavoritedByNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -3887,6 +4111,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    favorites?: all_eventsUncheckedUpdateManyWithoutFavoritedByNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -3970,9 +4195,19 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type UserListRelationFilter = {
+    every?: UserWhereInput
+    some?: UserWhereInput
+    none?: UserWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type UserOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type all_eventsCountOrderByAggregateInput = {
@@ -4120,6 +4355,16 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type All_eventsListRelationFilter = {
+    every?: all_eventsWhereInput
+    some?: all_eventsWhereInput
+    none?: all_eventsWhereInput
+  }
+
+  export type all_eventsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     fullName?: SortOrder
@@ -4244,12 +4489,62 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type UserCreateNestedManyWithoutFavoritesInput = {
+    create?: XOR<UserCreateWithoutFavoritesInput, UserUncheckedCreateWithoutFavoritesInput> | UserCreateWithoutFavoritesInput[] | UserUncheckedCreateWithoutFavoritesInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutFavoritesInput | UserCreateOrConnectWithoutFavoritesInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
+  export type UserUncheckedCreateNestedManyWithoutFavoritesInput = {
+    create?: XOR<UserCreateWithoutFavoritesInput, UserUncheckedCreateWithoutFavoritesInput> | UserCreateWithoutFavoritesInput[] | UserUncheckedCreateWithoutFavoritesInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutFavoritesInput | UserCreateOrConnectWithoutFavoritesInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type UserUpdateManyWithoutFavoritesNestedInput = {
+    create?: XOR<UserCreateWithoutFavoritesInput, UserUncheckedCreateWithoutFavoritesInput> | UserCreateWithoutFavoritesInput[] | UserUncheckedCreateWithoutFavoritesInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutFavoritesInput | UserCreateOrConnectWithoutFavoritesInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutFavoritesInput | UserUpsertWithWhereUniqueWithoutFavoritesInput[]
+    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    update?: UserUpdateWithWhereUniqueWithoutFavoritesInput | UserUpdateWithWhereUniqueWithoutFavoritesInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutFavoritesInput | UserUpdateManyWithWhereWithoutFavoritesInput[]
+    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  }
+
+  export type UserUncheckedUpdateManyWithoutFavoritesNestedInput = {
+    create?: XOR<UserCreateWithoutFavoritesInput, UserUncheckedCreateWithoutFavoritesInput> | UserCreateWithoutFavoritesInput[] | UserUncheckedCreateWithoutFavoritesInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutFavoritesInput | UserCreateOrConnectWithoutFavoritesInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutFavoritesInput | UserUpsertWithWhereUniqueWithoutFavoritesInput[]
+    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    update?: UserUpdateWithWhereUniqueWithoutFavoritesInput | UserUpdateWithWhereUniqueWithoutFavoritesInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutFavoritesInput | UserUpdateManyWithWhereWithoutFavoritesInput[]
+    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  }
+
+  export type all_eventsCreateNestedManyWithoutFavoritedByInput = {
+    create?: XOR<all_eventsCreateWithoutFavoritedByInput, all_eventsUncheckedCreateWithoutFavoritedByInput> | all_eventsCreateWithoutFavoritedByInput[] | all_eventsUncheckedCreateWithoutFavoritedByInput[]
+    connectOrCreate?: all_eventsCreateOrConnectWithoutFavoritedByInput | all_eventsCreateOrConnectWithoutFavoritedByInput[]
+    connect?: all_eventsWhereUniqueInput | all_eventsWhereUniqueInput[]
+  }
+
+  export type all_eventsUncheckedCreateNestedManyWithoutFavoritedByInput = {
+    create?: XOR<all_eventsCreateWithoutFavoritedByInput, all_eventsUncheckedCreateWithoutFavoritedByInput> | all_eventsCreateWithoutFavoritedByInput[] | all_eventsUncheckedCreateWithoutFavoritedByInput[]
+    connectOrCreate?: all_eventsCreateOrConnectWithoutFavoritedByInput | all_eventsCreateOrConnectWithoutFavoritedByInput[]
+    connect?: all_eventsWhereUniqueInput | all_eventsWhereUniqueInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -4270,6 +4565,32 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type all_eventsUpdateManyWithoutFavoritedByNestedInput = {
+    create?: XOR<all_eventsCreateWithoutFavoritedByInput, all_eventsUncheckedCreateWithoutFavoritedByInput> | all_eventsCreateWithoutFavoritedByInput[] | all_eventsUncheckedCreateWithoutFavoritedByInput[]
+    connectOrCreate?: all_eventsCreateOrConnectWithoutFavoritedByInput | all_eventsCreateOrConnectWithoutFavoritedByInput[]
+    upsert?: all_eventsUpsertWithWhereUniqueWithoutFavoritedByInput | all_eventsUpsertWithWhereUniqueWithoutFavoritedByInput[]
+    set?: all_eventsWhereUniqueInput | all_eventsWhereUniqueInput[]
+    disconnect?: all_eventsWhereUniqueInput | all_eventsWhereUniqueInput[]
+    delete?: all_eventsWhereUniqueInput | all_eventsWhereUniqueInput[]
+    connect?: all_eventsWhereUniqueInput | all_eventsWhereUniqueInput[]
+    update?: all_eventsUpdateWithWhereUniqueWithoutFavoritedByInput | all_eventsUpdateWithWhereUniqueWithoutFavoritedByInput[]
+    updateMany?: all_eventsUpdateManyWithWhereWithoutFavoritedByInput | all_eventsUpdateManyWithWhereWithoutFavoritedByInput[]
+    deleteMany?: all_eventsScalarWhereInput | all_eventsScalarWhereInput[]
+  }
+
+  export type all_eventsUncheckedUpdateManyWithoutFavoritedByNestedInput = {
+    create?: XOR<all_eventsCreateWithoutFavoritedByInput, all_eventsUncheckedCreateWithoutFavoritedByInput> | all_eventsCreateWithoutFavoritedByInput[] | all_eventsUncheckedCreateWithoutFavoritedByInput[]
+    connectOrCreate?: all_eventsCreateOrConnectWithoutFavoritedByInput | all_eventsCreateOrConnectWithoutFavoritedByInput[]
+    upsert?: all_eventsUpsertWithWhereUniqueWithoutFavoritedByInput | all_eventsUpsertWithWhereUniqueWithoutFavoritedByInput[]
+    set?: all_eventsWhereUniqueInput | all_eventsWhereUniqueInput[]
+    disconnect?: all_eventsWhereUniqueInput | all_eventsWhereUniqueInput[]
+    delete?: all_eventsWhereUniqueInput | all_eventsWhereUniqueInput[]
+    connect?: all_eventsWhereUniqueInput | all_eventsWhereUniqueInput[]
+    update?: all_eventsUpdateWithWhereUniqueWithoutFavoritedByInput | all_eventsUpdateWithWhereUniqueWithoutFavoritedByInput[]
+    updateMany?: all_eventsUpdateManyWithWhereWithoutFavoritedByInput | all_eventsUpdateManyWithWhereWithoutFavoritedByInput[]
+    deleteMany?: all_eventsScalarWhereInput | all_eventsScalarWhereInput[]
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -4461,6 +4782,282 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type UserCreateWithoutFavoritesInput = {
+    id?: string
+    fullName: string
+    email: string
+    password: string
+    age: number
+    numberChildren: number
+    childrenAges: string
+    genderChildren: string
+    location: string
+    isAdmin?: boolean
+    isDisabled?: boolean
+    role?: $Enums.Role
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserUncheckedCreateWithoutFavoritesInput = {
+    id?: string
+    fullName: string
+    email: string
+    password: string
+    age: number
+    numberChildren: number
+    childrenAges: string
+    genderChildren: string
+    location: string
+    isAdmin?: boolean
+    isDisabled?: boolean
+    role?: $Enums.Role
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserCreateOrConnectWithoutFavoritesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutFavoritesInput, UserUncheckedCreateWithoutFavoritesInput>
+  }
+
+  export type UserUpsertWithWhereUniqueWithoutFavoritesInput = {
+    where: UserWhereUniqueInput
+    update: XOR<UserUpdateWithoutFavoritesInput, UserUncheckedUpdateWithoutFavoritesInput>
+    create: XOR<UserCreateWithoutFavoritesInput, UserUncheckedCreateWithoutFavoritesInput>
+  }
+
+  export type UserUpdateWithWhereUniqueWithoutFavoritesInput = {
+    where: UserWhereUniqueInput
+    data: XOR<UserUpdateWithoutFavoritesInput, UserUncheckedUpdateWithoutFavoritesInput>
+  }
+
+  export type UserUpdateManyWithWhereWithoutFavoritesInput = {
+    where: UserScalarWhereInput
+    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutFavoritesInput>
+  }
+
+  export type UserScalarWhereInput = {
+    AND?: UserScalarWhereInput | UserScalarWhereInput[]
+    OR?: UserScalarWhereInput[]
+    NOT?: UserScalarWhereInput | UserScalarWhereInput[]
+    id?: UuidFilter<"User"> | string
+    fullName?: StringFilter<"User"> | string
+    email?: StringFilter<"User"> | string
+    password?: StringFilter<"User"> | string
+    age?: IntFilter<"User"> | number
+    numberChildren?: IntFilter<"User"> | number
+    childrenAges?: StringFilter<"User"> | string
+    genderChildren?: StringFilter<"User"> | string
+    location?: StringFilter<"User"> | string
+    isAdmin?: BoolFilter<"User"> | boolean
+    isDisabled?: BoolFilter<"User"> | boolean
+    role?: EnumRoleFilter<"User"> | $Enums.Role
+    createdAt?: DateTimeFilter<"User"> | Date | string
+    updatedAt?: DateTimeFilter<"User"> | Date | string
+  }
+
+  export type all_eventsCreateWithoutFavoritedByInput = {
+    event_id: string
+    name?: string | null
+    url?: string | null
+    start_time?: string | null
+    start_date?: string | null
+    end_time?: string | null
+    end_date?: string | null
+    duration?: string | null
+    venue_name?: string | null
+    venue_address?: string | null
+    longitude?: string | null
+    latitude?: string | null
+    summary?: string | null
+    is_online_event?: string | null
+    tickets_url?: string | null
+    tags?: string | null
+    data_source?: string | null
+    image?: string | null
+  }
+
+  export type all_eventsUncheckedCreateWithoutFavoritedByInput = {
+    event_id: string
+    name?: string | null
+    url?: string | null
+    start_time?: string | null
+    start_date?: string | null
+    end_time?: string | null
+    end_date?: string | null
+    duration?: string | null
+    venue_name?: string | null
+    venue_address?: string | null
+    longitude?: string | null
+    latitude?: string | null
+    summary?: string | null
+    is_online_event?: string | null
+    tickets_url?: string | null
+    tags?: string | null
+    data_source?: string | null
+    image?: string | null
+  }
+
+  export type all_eventsCreateOrConnectWithoutFavoritedByInput = {
+    where: all_eventsWhereUniqueInput
+    create: XOR<all_eventsCreateWithoutFavoritedByInput, all_eventsUncheckedCreateWithoutFavoritedByInput>
+  }
+
+  export type all_eventsUpsertWithWhereUniqueWithoutFavoritedByInput = {
+    where: all_eventsWhereUniqueInput
+    update: XOR<all_eventsUpdateWithoutFavoritedByInput, all_eventsUncheckedUpdateWithoutFavoritedByInput>
+    create: XOR<all_eventsCreateWithoutFavoritedByInput, all_eventsUncheckedCreateWithoutFavoritedByInput>
+  }
+
+  export type all_eventsUpdateWithWhereUniqueWithoutFavoritedByInput = {
+    where: all_eventsWhereUniqueInput
+    data: XOR<all_eventsUpdateWithoutFavoritedByInput, all_eventsUncheckedUpdateWithoutFavoritedByInput>
+  }
+
+  export type all_eventsUpdateManyWithWhereWithoutFavoritedByInput = {
+    where: all_eventsScalarWhereInput
+    data: XOR<all_eventsUpdateManyMutationInput, all_eventsUncheckedUpdateManyWithoutFavoritedByInput>
+  }
+
+  export type all_eventsScalarWhereInput = {
+    AND?: all_eventsScalarWhereInput | all_eventsScalarWhereInput[]
+    OR?: all_eventsScalarWhereInput[]
+    NOT?: all_eventsScalarWhereInput | all_eventsScalarWhereInput[]
+    event_id?: StringFilter<"all_events"> | string
+    name?: StringNullableFilter<"all_events"> | string | null
+    url?: StringNullableFilter<"all_events"> | string | null
+    start_time?: StringNullableFilter<"all_events"> | string | null
+    start_date?: StringNullableFilter<"all_events"> | string | null
+    end_time?: StringNullableFilter<"all_events"> | string | null
+    end_date?: StringNullableFilter<"all_events"> | string | null
+    duration?: StringNullableFilter<"all_events"> | string | null
+    venue_name?: StringNullableFilter<"all_events"> | string | null
+    venue_address?: StringNullableFilter<"all_events"> | string | null
+    longitude?: StringNullableFilter<"all_events"> | string | null
+    latitude?: StringNullableFilter<"all_events"> | string | null
+    summary?: StringNullableFilter<"all_events"> | string | null
+    is_online_event?: StringNullableFilter<"all_events"> | string | null
+    tickets_url?: StringNullableFilter<"all_events"> | string | null
+    tags?: StringNullableFilter<"all_events"> | string | null
+    data_source?: StringNullableFilter<"all_events"> | string | null
+    image?: StringNullableFilter<"all_events"> | string | null
+  }
+
+  export type UserUpdateWithoutFavoritesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    age?: IntFieldUpdateOperationsInput | number
+    numberChildren?: IntFieldUpdateOperationsInput | number
+    childrenAges?: StringFieldUpdateOperationsInput | string
+    genderChildren?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isDisabled?: BoolFieldUpdateOperationsInput | boolean
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUncheckedUpdateWithoutFavoritesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    age?: IntFieldUpdateOperationsInput | number
+    numberChildren?: IntFieldUpdateOperationsInput | number
+    childrenAges?: StringFieldUpdateOperationsInput | string
+    genderChildren?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isDisabled?: BoolFieldUpdateOperationsInput | boolean
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUncheckedUpdateManyWithoutFavoritesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    age?: IntFieldUpdateOperationsInput | number
+    numberChildren?: IntFieldUpdateOperationsInput | number
+    childrenAges?: StringFieldUpdateOperationsInput | string
+    genderChildren?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isDisabled?: BoolFieldUpdateOperationsInput | boolean
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type all_eventsUpdateWithoutFavoritedByInput = {
+    event_id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    start_time?: NullableStringFieldUpdateOperationsInput | string | null
+    start_date?: NullableStringFieldUpdateOperationsInput | string | null
+    end_time?: NullableStringFieldUpdateOperationsInput | string | null
+    end_date?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
+    venue_name?: NullableStringFieldUpdateOperationsInput | string | null
+    venue_address?: NullableStringFieldUpdateOperationsInput | string | null
+    longitude?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableStringFieldUpdateOperationsInput | string | null
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    is_online_event?: NullableStringFieldUpdateOperationsInput | string | null
+    tickets_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: NullableStringFieldUpdateOperationsInput | string | null
+    data_source?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type all_eventsUncheckedUpdateWithoutFavoritedByInput = {
+    event_id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    start_time?: NullableStringFieldUpdateOperationsInput | string | null
+    start_date?: NullableStringFieldUpdateOperationsInput | string | null
+    end_time?: NullableStringFieldUpdateOperationsInput | string | null
+    end_date?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
+    venue_name?: NullableStringFieldUpdateOperationsInput | string | null
+    venue_address?: NullableStringFieldUpdateOperationsInput | string | null
+    longitude?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableStringFieldUpdateOperationsInput | string | null
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    is_online_event?: NullableStringFieldUpdateOperationsInput | string | null
+    tickets_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: NullableStringFieldUpdateOperationsInput | string | null
+    data_source?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type all_eventsUncheckedUpdateManyWithoutFavoritedByInput = {
+    event_id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    start_time?: NullableStringFieldUpdateOperationsInput | string | null
+    start_date?: NullableStringFieldUpdateOperationsInput | string | null
+    end_time?: NullableStringFieldUpdateOperationsInput | string | null
+    end_date?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableStringFieldUpdateOperationsInput | string | null
+    venue_name?: NullableStringFieldUpdateOperationsInput | string | null
+    venue_address?: NullableStringFieldUpdateOperationsInput | string | null
+    longitude?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableStringFieldUpdateOperationsInput | string | null
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    is_online_event?: NullableStringFieldUpdateOperationsInput | string | null
+    tickets_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: NullableStringFieldUpdateOperationsInput | string | null
+    data_source?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 
