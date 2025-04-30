@@ -10,7 +10,7 @@ dotenv.config();
 
 
 const app = express();
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: ["http://localhost:5173", "https://qhn-frontend.onrender.com"]  }));
 const PORT = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
