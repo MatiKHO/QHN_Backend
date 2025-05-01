@@ -1,5 +1,15 @@
 import prisma from '../prisma/index.js';
 
+export const getAllEvents = async (req, res) => {
+  try {
+    const events = await prisma.allEvents.findMany();
+    res.status(200).json(events);
+  } catch (error) {
+    console.error("Error fetching all events:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
 export const getEventsByTag = async (req, res) => {
   try {
     const { tags } = req.query;
@@ -27,8 +37,8 @@ export const getEventsById = async (req, res) => {
   try {
     const { event_id } = req.params;
 
-    if( !event_id ) {
-      return res.status(400).json({error: "ID is required"});
+    if (!event_id) {
+      return res.status(400).json({ error: "ID is required" });
     }
 
     const event = await prisma.allEvents.findUnique({
@@ -37,10 +47,8 @@ export const getEventsById = async (req, res) => {
       },
     });
     res.status(200).json(event);
-
   } catch (error) {
     console.error("Error fetching event by ID:", error);
     res.status(500).json({ error: "Internal server error" });
-    
   }
-}
+};
