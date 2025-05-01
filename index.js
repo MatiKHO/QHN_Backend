@@ -17,7 +17,7 @@ app.use(
       "http://localhost:5173",
       "http://192.168.68.27:5173",
       "http://192.168.68.27:5174", // por si usas este puerto también
-      "https://qhn-frontend.onrender.com"
+      "https://qhn-frontend.onrender.com",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,

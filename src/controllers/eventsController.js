@@ -1,4 +1,4 @@
-import prisma from '../prisma/index.js';
+import prisma from "../prisma/index.js";
 
 export const getAllEvents = async (req, res) => {
   try {
@@ -80,7 +80,6 @@ export const getEventsBySource = async (req, res) => {
     });
 
     res.status(200).json(events);
-
   } catch (error) {
     console.error("Error fetching events by source:", error);
     res.status(500).json({ error: "Internal server error" });
@@ -91,31 +90,29 @@ export const getEventsByName = async (req, res) => {
   try {
     const { name } = req.query;
 
-    if(!name || name.trim() === "") {
-      return res.status(400).json({error: "Name is required and cannot be empty."});
-    };
+    if (!name || name.trim() === "") {
+      return res
+        .status(400)
+        .json({ error: "Name is required and cannot be empty." });
+    }
 
     const events = await prisma.allEvents.findMany({
       where: {
         name: {
           startsWith: name,
-          mode: 'insensitive', 
-        }
+          mode: "insensitive",
+        },
       },
       orderBy: {
-        start_date: 'desc',
+        start_date: "desc",
       },
       skip: 0,
       take: 10,
     });
 
     res.status(200).json(events);
-
-
-
   } catch (error) {
     console.error("Error fetching events by name:", error);
     res.status(500).json({ error: "Internal server error" });
-    
   }
-}
+};
