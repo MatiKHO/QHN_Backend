@@ -1,11 +1,7 @@
-import { Router } from "express";
-import {
-  getAllEvents,
-  getEventsByTag,
-  getEventsById,
-  getEventsBySource,
-  getEventsByName,
-} from "../controllers/eventsController.js";
+import { Router } from 'express';
+import { getEventsByTag, getEventsById, getEventsBySource,
+    getEventsByName,} from '../controllers/eventsController.js';
+
 
 const router = Router();
 
@@ -16,3 +12,4 @@ router.get("/eventsBySource", getEventsBySource); // Get all events by data sour
 router.get("/eventsByName", getEventsByName); // Get all events by data source
 
 export default router;
+

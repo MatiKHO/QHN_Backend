@@ -4,15 +4,26 @@ import cors from "cors";
 import { errorHandler } from "./src/middlewares/errorHandler.js";
 
 import eventsRoutes from "./src/routes/events.route.js";
+import eventsRoutes from "./src/routes/events.route.js";
 
 dotenv.config();
 
 const app = express();
+
+// ✅ CORS ampliado para IP local, localhost y Render frontend
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://qhn-frontend.onrender.com"],
+    origin: [
+      "http://localhost:5173",
+      "http://192.168.68.27:5173",
+      "http://192.168.68.27:5174", // por si usas este puerto también
+      "https://qhn-frontend.onrender.com"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
   })
 );
+
 const PORT = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
