@@ -3,14 +3,16 @@ import dotenv from "dotenv";
 import cors from "cors";
 import { errorHandler } from "./src/middlewares/errorHandler.js";
 
-import eventsRoutes from "./src/routes/events.route.js"
+import eventsRoutes from "./src/routes/events.route.js";
 
 dotenv.config();
 
-
-
 const app = express();
-app.use(cors({ origin: ["http://localhost:5173", "https://qhn-frontend.onrender.com"]  }));
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://qhn-frontend.onrender.com"],
+  })
+);
 const PORT = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
@@ -21,7 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-app.use('/api', eventsRoutes);
+app.use("/api", eventsRoutes);
 
 // Error handler
 app.use(errorHandler);
