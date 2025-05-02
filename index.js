@@ -4,7 +4,6 @@ import cors from "cors";
 import { errorHandler } from "./src/middlewares/errorHandler.js";
 
 import eventsRoutes from "./src/routes/events.route.js";
-import eventsRoutes from "./src/routes/events.route.js";
 
 dotenv.config();
 
