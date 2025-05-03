@@ -1,5 +1,5 @@
 import prisma from '../prisma/index.js';
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 
 export const registerUser = async (req, res) => {
   try {
@@ -21,16 +21,15 @@ export const registerUser = async (req, res) => {
         fullName,
         email,
         password: hashedPassword,
-        age: age ? parseInt(age) : null,
-        childrenAges: childrenAges || "",
-        genderChildren: genderChildren || "",
-        location: location || "",
-        numberChildren: numberChildren ? parseInt(numberChildren) : null,
+        age: age ? parseInt(age) : undefined,
+        childrenAges: childrenAges || undefined,
+        genderChildren: genderChildren || undefined,
+        location: location || undefined,
+        numberChildren: numberChildren ? parseInt(numberChildren) : undefined,
       },
     });
 
-
-    res.status(201).json({ message: "Usuario registrado correctamente", user: newUser });
+    res.status(201).json({ message: "Usuario registrado correctamente" });
   } catch (error) {
     console.error("Error registering user:", error);
     res.status(500).json({ error: "Internal server error" });
