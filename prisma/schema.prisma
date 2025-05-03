@@ -36,15 +36,15 @@ model User {
   fullName       String
   email          String      @unique
   password       String
-  age            Int
+  age            Int?        // ← Opcional
   createdAt      DateTime    @default(now())
   updatedAt      DateTime    @updatedAt
-  childrenAges   String
-  genderChildren String
+  childrenAges   String?     // ← Opcional
+  genderChildren String?     // ← Opcional
   isAdmin        Boolean     @default(false)
   isDisabled     Boolean     @default(false)
-  location       String
-  numberChildren Int
+  location       String?     // ← Opcional
+  numberChildren Int?        // ← Opcional
   role           Role        @default(CUSTOMER)
   all_events     AllEvents[]
 }
