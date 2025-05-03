@@ -1,4 +1,5 @@
 import prisma from '../prisma/index.js';
+import bcrypt from 'bcrypt';
 
 export const registerUser = async (req, res) => {
   try {
@@ -13,20 +14,22 @@ export const registerUser = async (req, res) => {
       numberChildren,
     } = req.body;
 
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     const newUser = await prisma.user.create({
       data: {
         fullName,
         email,
-        password,
-        age: age ? parseInt(age) : 0,
-        childrenAges: childrenAges || "",
-        genderChildren: genderChildren || "",
-        location: location || "",
-        numberChildren: numberChildren ? parseInt(numberChildren) : 0,
+        password: hashedPassword,
+        age: parseInt(age),
+        childrenAges,
+        genderChildren,
+        location,
+        numberChildren: parseInt(numberChildren),
       },
     });
 
-    res.status(201).json(newUser);
+    res.status(201).json({ message: "Usuario registrado correctamente" });
   } catch (error) {
     console.error("Error registering user:", error);
     res.status(500).json({ error: "Internal server error" });
