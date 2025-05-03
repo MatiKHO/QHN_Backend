@@ -7,12 +7,17 @@ import {
   getEventsByName,
 } from "../controllers/eventsController.js";
 
+import { registerUser } from "../controllers/userController.js";
+
 const router = Router();
 
 router.get("/events", getAllEvents);
-router.get("/events/:event_id", getEventsById); // Get event by ID
-router.get("/eventsByTag", getEventsByTag); // Get all events by tag
-router.get("/eventsBySource", getEventsBySource); // Get all events by data source
-router.get("/eventsByName", getEventsByName); // Get all events by data source
+router.get("/events/:event_id", getEventsById);
+router.get("/eventsByTag", getEventsByTag);
+router.get("/eventsBySource", getEventsBySource);
+router.get("/eventsByName", getEventsByName);
+
+router.post("/register", registerUser);
 
 export default router;
+
