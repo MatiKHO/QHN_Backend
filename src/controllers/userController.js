@@ -18,11 +18,11 @@ export const registerUser = async (req, res) => {
         fullName,
         email,
         password,
-        age: parseInt(age),
-        childrenAges,
-        genderChildren,
-        location,
-        numberChildren: parseInt(numberChildren),
+        age: age ? parseInt(age) : 0,
+        childrenAges: childrenAges || "",
+        genderChildren: genderChildren || "",
+        location: location || "",
+        numberChildren: numberChildren ? parseInt(numberChildren) : 0,
       },
     });
 
@@ -32,3 +32,4 @@ export const registerUser = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
