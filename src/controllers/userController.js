@@ -14,20 +14,28 @@ export const registerUser = async (req, res) => {
       numberChildren,
     } = req.body;
 
+    // Validación mínima obligatoria
+    if (!fullName || !email || !password) {
+      return res.status(400).json({ error: "Nombre, email y contraseña son obligatorios." });
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUser = await prisma.user.create({
-      data: {
-        fullName,
-        email,
-        password: hashedPassword,
-        age: age ? parseInt(age) : undefined,
-        childrenAges: childrenAges || undefined,
-        genderChildren: genderChildren || undefined,
-        location: location || undefined,
-        numberChildren: numberChildren ? parseInt(numberChildren) : undefined,
-      },
-    });
+    // Construcción dinámica del objeto data
+    const data = {
+      fullName,
+      email,
+      password: hashedPassword,
+    };
+
+    // Solo añadir si existe y es válido
+    if (!isNaN(parseInt(age))) data.age = parseInt(age);
+    if (childrenAges) data.childrenAges = childrenAges;
+    if (genderChildren) data.genderChildren = genderChildren;
+    if (location) data.location = location;
+    if (!isNaN(parseInt(numberChildren))) data.numberChildren = parseInt(numberChildren);
+
+    const newUser = await prisma.user.create({ data });
 
     res.status(201).json({ message: "Usuario registrado correctamente" });
   } catch (error) {
