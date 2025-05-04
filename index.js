@@ -4,6 +4,7 @@ import cors from "cors";
 import { errorHandler } from "./src/middlewares/errorHandler.js";
 
 import eventsRoutes from "./src/routes/events.route.js";
+import userRoutes from "./src/routes/user.route.js";
 
 dotenv.config();
 
@@ -34,6 +35,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/api", eventsRoutes);
+app.use("/api/users", userRoutes);
+
 
 // Error handler
 app.use(errorHandler);

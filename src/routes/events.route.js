@@ -7,7 +7,6 @@ import {
   getEventsByName,
 } from "../controllers/eventsController.js";
 
-import { registerUser } from "../controllers/userController.js";
 
 const router = Router();
 
@@ -17,7 +16,7 @@ router.get("/eventsByTag", getEventsByTag);
 router.get("/eventsBySource", getEventsBySource);
 router.get("/eventsByName", getEventsByName);
 
-router.post("/register", registerUser);
+
 
 export default router;
 
