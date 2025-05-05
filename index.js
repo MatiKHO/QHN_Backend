@@ -11,10 +11,12 @@ dotenv.config();
 
 const app = express();
 
+
+
 app.use(
   cors({
     origin: [
-      "http://localhost:5173/",
+      "http://localhost:5173",
       "http://192.168.68.27:5173",
       "http://192.168.68.27:5174", 
       "https://qhn-frontend.onrender.com",
