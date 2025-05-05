@@ -20,4 +20,6 @@ export const generateChat = async (req, res) => {
         console.error("Error en la generación del chat:", error.message);
         res.status(500).json({ message: "Error en la generación del chat", error: error.message});
     }
-}
+};
+
+
