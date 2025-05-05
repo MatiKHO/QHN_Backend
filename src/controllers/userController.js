@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 
 export const registerUser = async (req, res) => {
   try {
+    console.log("Datos recibidos del frontend:", req.body);
     const { fullName, email, password } = req.body;
 
     const existingUser = await prisma.user.findUnique({
@@ -24,6 +25,8 @@ export const registerUser = async (req, res) => {
         role: "CUSTOMER",
       },
     });
+
+    console.log("Usuario creado:", newUser);
 
     res
       .status(201)

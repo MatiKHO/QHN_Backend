@@ -5,18 +5,18 @@ import { errorHandler } from "./src/middlewares/errorHandler.js";
 
 import eventsRoutes from "./src/routes/events.route.js";
 import userRoutes from "./src/routes/user.route.js";
+import chatRoutes from "./src/routes/chat.route.js";
 
 dotenv.config();
 
 const app = express();
 
-// ✅ CORS ampliado para IP local, localhost y Render frontend
 app.use(
   cors({
     origin: [
-      "http://localhost:5173",
+      "http://localhost:5173/",
       "http://192.168.68.27:5173",
-      "http://192.168.68.27:5174", // por si usas este puerto también
+      "http://192.168.68.27:5174", 
       "https://qhn-frontend.onrender.com",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
@@ -36,6 +36,7 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use("/api", eventsRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/chat", chatRoutes);
 
 
 // Error handler
