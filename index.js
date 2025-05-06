@@ -22,7 +22,8 @@ app.use(
       "http://192.168.1.130:5178",
       "https://qhn-frontend.onrender.com",
       "https://qhn-backend.onrender.com",
-      "http://192.168.1.130:5180"
+      "http://192.168.1.130:5180",
+      "https://www.qhcn.online"
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
