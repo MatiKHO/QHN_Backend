@@ -8,7 +8,7 @@ export const generateChat = async (req, res) => {
             return res.status(404).json({ message: "No se encontró ningún mensaje"}); 
         }
 
-        const response = await axios.post("https://fastapi-openai-2.onrender.com/generate", {
+        const response = await axios.post("https://fastapi-openai-odwi.onrender.com/generate", {
             prompt: prompt
         });
 
