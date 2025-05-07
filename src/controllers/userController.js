@@ -30,6 +30,7 @@ export const registerUser = async (req, res) => {
       .status(201)
       .json({ message: "Usuario registrado exitosamente", user: newUser });
   } catch (error) {
+    console.error("Error en el registro:", error);
     res.status(500).json({ message: "Error en el registro del usuario" });
   }
 };

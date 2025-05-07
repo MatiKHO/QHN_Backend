@@ -33,13 +33,13 @@ app.use(
 
 const PORT = process.env.PORT || 5500;
 
-app.get("/", (req, res) => {
-  res.send("This is the Backend API");
-});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.get("/", (req, res) => {
+  res.send("This is the Backend API");
+});
 // Routes
 app.use("/api", eventsRoutes);
 app.use("/api/users", userRoutes);
