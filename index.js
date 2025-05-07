@@ -31,7 +31,7 @@ app.use(
   })
 );
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5500;
 
 app.get("/", (req, res) => {
   res.send("This is the Backend API");
