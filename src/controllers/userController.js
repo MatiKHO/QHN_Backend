@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 export const registerUser = async (req, res) => {
   try {
-    const { fullName, email, password, age, childrenAges, numberChildren, genderChildren } = req.body;
+    const { fullName, email, password, age, childrenAges, numberChildren, genderChildren, location } = req.body;
     const numericAge = parseInt(age, 10);
 
     if (!numericAge || isNaN(numericAge) || numericAge <= 0) {
@@ -33,6 +33,7 @@ export const registerUser = async (req, res) => {
         genderChildren: genderChildren ?? null,
         isAdmin: false,
         isDisabled: false,
+        location: location ?? null,
       },
     });
 
