@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 export const registerUser = async (req, res) => {
   try {
-    const { fullName, email, password, age } = req.body;
+    const { fullName, email, password, age, childrenAges, numberChildren, genderChildren } = req.body;
     const numericAge = parseInt(age, 10);
 
     if (!numericAge || isNaN(numericAge) || numericAge <= 0) {
@@ -28,9 +28,13 @@ export const registerUser = async (req, res) => {
         password: hashedPassword,
         role: "CUSTOMER",
         age: numericAge,
+        childrenAges: childrenAges ?? null,
+        numberChildren: numberChildren ?? null,
+        genderChildren: genderChildren ?? null,
+        isAdmin: false,
+        isDisabled: false,
       },
     });
-
 
     res
       .status(201)
@@ -66,26 +70,24 @@ export const loginUser = async (req, res) => {
     );
     res.status(200).json({ message: "Inicio de sesión exitoso", token });
   } catch (error) {
-    console.error(error.message)
+    console.error(error.message);
     res.status(500).json({ message: "Error en el inicio de sesión" });
   }
 };
 
-
 export const userProfile = async (req, res) => {
   try {
     const user = await prisma.user.findUnique({
-      where: {id: req.user.id},
-      select: {id: true, fullName: true, email: true },
+      where: { id: req.user.id },
+      select: { id: true, fullName: true, email: true },
     });
 
-    if(!user) {
-      return res.status(404).json({ message: "Usuario no encontrado"});
-
+    if (!user) {
+      return res.status(404).json({ message: "Usuario no encontrado" });
     }
 
     res.status(200).json({ message: "Perfil del usuario encontrado", user });
   } catch (error) {
-    res.status(500).json({ message: "Error al obtener el perfil del usuario"})
+    res.status(500).json({ message: "Error al obtener el perfil del usuario" });
   }
 };
