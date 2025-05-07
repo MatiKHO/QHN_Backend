@@ -4,7 +4,12 @@ import jwt from "jsonwebtoken";
 
 export const registerUser = async (req, res) => {
   try {
-    const { fullName, email, password } = req.body;
+    const { fullName, email, password, age } = req.body;
+    const numericAge = parseInt(age, 10);
+
+    if (!numericAge || isNaN(numericAge) || numericAge <= 0) {
+      return res.status(400).json({ message: "Edad inválida" });
+    }
 
     const existingUser = await prisma.user.findUnique({
       where: { email },
@@ -22,6 +27,7 @@ export const registerUser = async (req, res) => {
         email,
         password: hashedPassword,
         role: "CUSTOMER",
+        age: numericAge,
       },
     });
 
